@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import NoteView from "./NoteView";
+import Home from "./Home";
 
 const Notes = ({
     selectedNote,

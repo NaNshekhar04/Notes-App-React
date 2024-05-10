@@ -2,7 +2,7 @@
 import React from "react";
 
 import NoteHeader from "./NoteHeader";
-// import Input from "./Input";/
+import Input from "./Input";
 
 const NoteView = ({ name, color, id, isMobile, display, setDisplay }) => {
     const [notes, setNotes] = React.useState([]);
@@ -57,6 +57,8 @@ const NoteView = ({ name, color, id, isMobile, display, setDisplay }) => {
                     );
                 })}
             {notes && notes.length <= 0 ? <p className="example-txt">Start Writing Notes Here!</p> : ""}
+
+            <Input id={id} handleNewNote={handleNewNote} />
         </div>
     );
 };
