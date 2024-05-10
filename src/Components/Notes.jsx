@@ -1,8 +1,31 @@
+/* eslint-disable react/prop-types */
+import React from "react";
+import NoteView from "./NoteView";
 
-function Notes() {
+const Notes = ({
+    selectedNote,
+    isMobile,
+    display,
+    setDisplay,
+    noteBtnClick
+}) => {
     return (
-        <div>Notes</div>
-    )
-}
+        <React.Fragment>
+            {selectedNote && selectedNote.notes ? (
+                <NoteView
+                    id={selectedNote.id}
+                    name={selectedNote.name}
+                    color={selectedNote.color}
+                    notes={selectedNote.notes}
+                    isMobile={isMobile}
+                    display={display}
+                    setDisplay={setDisplay}
+                />
+            ) : (
+                <Home noteBtnClick={noteBtnClick} isMobile={isMobile} />
+            )}
+        </React.Fragment>
+    );
+};
 
-export default Notes
+export default Notes;

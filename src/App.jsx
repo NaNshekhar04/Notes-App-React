@@ -32,8 +32,8 @@ function App() {
 
   return (
     <>
-    <div className=" App flex flex-row">
-      <Sidebar
+      <div className=" App flex flex-row">
+        <Sidebar
           display={display}
           setDisplay={setDisplay}
           setNoteBtnClick={setNoteBtnClick}
@@ -41,10 +41,16 @@ function App() {
           setSelectedNote={setSelectedNote}
           selectedNote={selectedNote}
           isMobile={isMobile}
-      />
-      <Notes/>
-    </div>
-      <CreateNotes/>
+        />
+        <Notes
+          display={display}
+          setDisplay={setDisplay}
+          selectedNote={selectedNote}
+          isMobile={isMobile}
+          noteBtnClick={noteBtnClick}
+        />
+      </div>
+      <CreateNotes />
     </>
   )
 }
