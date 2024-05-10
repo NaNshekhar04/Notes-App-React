@@ -1,33 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
+import Sidebar from './Components/Sidebar'
+import Notes from './Components/Notes'
+import CreateNotes from './Components/CreateNotes'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [newNoteGroup, setNewNoteGroup] = useState({
+    id: "",
+    name: "",
+    notes: [],
+    color: "",
+  });
+  const [noteBtnClick, setNoteBtnClick] = useState(false);
+  const [noteGroups, setNoteGroups] = useState(
+    localStorage.getItem("noteGroups")
+      ? JSON.parse(localStorage.getItem("noteGroups"))
+      : []
+  );
+  const [selectedNote, setSelectedNote] = useState({});
+  const [display, setDisplay] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className=" App flex flex-row">
+      <Sidebar
+          display={display}
+          setDisplay={setDisplay}
+          setNoteBtnClick={setNoteBtnClick}
+          noteGroups={noteGroups}
+          setSelectedNote={setSelectedNote}
+          selectedNote={selectedNote}
+          isMobile={isMobile}
+      />
+      <Notes/>
+    </div>
+      <CreateNotes/>
     </>
   )
 }
