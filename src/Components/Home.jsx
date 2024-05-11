@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import homeImg from "../assets/home.png";
+import "../styles/Home.css";
 
 const Home = ({ noteBtnClick, isMobile }) => {
     const [noteGroups, setNoteGroups] = useState(JSON.parse(localStorage.getItem("noteGroups")));

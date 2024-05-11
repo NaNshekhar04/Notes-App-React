@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import "../styles/CreateNotes.css";
 
 const colorOptions = [
     { color: "var(--notes-color-1)", name: "Color 1" },
