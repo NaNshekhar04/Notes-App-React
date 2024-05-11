@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import './App.css'
+import './styles/App.css';
 import Sidebar from './Components/Sidebar'
 import Notes from './Components/Notes'
 import CreateNotes from './Components/CreateNotes'
