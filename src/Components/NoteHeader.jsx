@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import "../styles/NoteHeader.css";
 
 const NoteHeader = ({ name, color, isMobile, setDisplay }) => {
     return (

@@ -1,25 +1,26 @@
-import { useState, useEffect } from 'react'
-import './styles/App.css';
-import Sidebar from './Components/Sidebar'
-import Notes from './Components/Notes'
-import CreateNotes from './Components/CreateNotes'
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from "react";
+import Sidebar from "./Components/Sidebar";
+import "./styles/App.css";
+import CreateNote from "./Components/CreateNotes";
+import Notes from "./Components/Notes";
 
 function App() {
-  const [newNoteGroup, setNewNoteGroup] = useState({
-    id: "",
-    name: "",
-    notes: [],
-    color: "",
-  });
   const [noteBtnClick, setNoteBtnClick] = useState(false);
   const [noteGroups, setNoteGroups] = useState(
     localStorage.getItem("noteGroups")
       ? JSON.parse(localStorage.getItem("noteGroups"))
       : []
   );
+  const [newNoteGroup, setNewNoteGroup] = useState({
+    id: "",
+    name: "",
+    notes: [],
+    color: "",
+  });
   const [selectedNote, setSelectedNote] = useState({});
-  const [display, setDisplay] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [display, setDisplay] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -31,7 +32,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <React.Fragment>
       <div className=" App flex flex-row">
         <Sidebar
           display={display}
@@ -42,6 +43,9 @@ function App() {
           selectedNote={selectedNote}
           isMobile={isMobile}
         />
+
+      {/* View The Notes  */}
+  
         <Notes
           display={display}
           setDisplay={setDisplay}
@@ -50,9 +54,18 @@ function App() {
           noteBtnClick={noteBtnClick}
         />
       </div>
-      <CreateNotes />
-    </>
-  )
+
+      {/* New Note Group */}
+
+      <CreateNote
+        noteBtnClick={noteBtnClick}
+        setNoteBtnClick={setNoteBtnClick}
+        noteGroups={noteGroups}
+        setNewNoteGroup={setNewNoteGroup}
+        setNoteGroups={setNoteGroups}
+      />
+    </React.Fragment>
+  );
 }
 
-export default App
+export default App;

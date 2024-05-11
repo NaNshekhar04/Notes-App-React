@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-
+import "../styles/NoteView.css"
 import NoteHeader from "./NoteHeader";
 import Input from "./Input";
 

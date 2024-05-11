@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
+import "../styles/Input.css";
 
 const Input = ({ id, handleNewNote }) => {
     const [note, setNote] = React.useState("");
